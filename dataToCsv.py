@@ -14,7 +14,7 @@ with open("data.json") as datajson:
 with open("countries.json") as countriesjson:
     countries=json.load(countriesjson)
 
-STARTTIME=datetime.datetime(2010,2,9)
+STARTTIME=datetime.datetime(2010,2,19)
 
 f=open("data.csv","w")
 
@@ -22,7 +22,7 @@ f.write("name,type,value,date\n")
 
 old=[]
 
-for i in range(10,len(data["tourist"])):
+for i in range(len(data["tourist"])):
     temp=[]
     tim=(STARTTIME+datetime.timedelta(days=i)).strftime("%Y/%m/%d")
     for j in handles:

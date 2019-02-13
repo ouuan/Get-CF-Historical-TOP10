@@ -3,7 +3,7 @@ import json
 import time
 import datetime
 
-STARTTIME=datetime.datetime(2010,2,9)
+STARTTIME=datetime.datetime(2010,2,19)
 
 def getDay(x):
     xTime=time.strftime("%Y %m %d",time.localtime(x)).split()
