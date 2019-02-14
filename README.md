@@ -6,10 +6,10 @@ Run `getHandles.py`, `getInactiveHandles`, `getCountries.py`, `getData.py` and `
 
 ## How does it work?
 
-It gets the rating history of each user **who is in the top5000 either of the actives or the inactives now** by Codeforces API. So if a user was in the top10 but is in neither the the top5000 of the actives nor the inactives now, he will not be included in the historical top10s.
+I get the rating history of each user **who is in the top5000 either of the active or the inactive now** by Codeforces API. So if a user was in the top10 but is in neither the top5000 of the active nor the inactive now, he will not be included in the historical top10s.
 
 See the codes for more details. (However, I'm not good at python, so the codes may be a little ugly.)
 
 ## See the video!
 
-The video is uploaded [here](https://www.bilibili.com/video/av43450831/).（Still the old version now. I will upload the corrected version later.）
+The video is uploaded [here](https://www.bilibili.com/video/av43450831/). Also [on YouTube](https://youtu.be/nfAnKzyiKTo), uploaded by [Anguei](https://github.com/Anguei). 
