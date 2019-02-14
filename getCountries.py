@@ -2,54 +2,54 @@ import requests
 import json
 import time
 
-with open("handles.json","r") as handlesjson:
-    handles=json.load(handlesjson)
+with open("handles.json", "r") as handlesjson:
+    handles = json.load(handlesjson)
 
-countries={}
+countries = {}
 
-url="https://codeforces.com/api/user.info?handles="
-flag=False
+url = "https://codeforces.com/api/user.info?handles="
+flag = False
 for i in range(len(handles)):
     if flag:
-        url=url+";"
+        url = url + ";"
     else:
-        flag=True
-    url=url+handles[i]
-    if i%100==99:
+        flag = True
+    url = url + handles[i]
+    if i % 100 == 99:
         while True:
             try:
-                response=requests.get(url)
+                response = requests.get(url)
             except:
                 time.sleep(1)
             else:
-                break;
-        data=json.loads(response.text)
+                break
+        data = json.loads(response.text)
         for j in data["result"]:
             print(j["handle"])
             if "country" in j.keys():
-                countries[j["handle"]]=j["country"]
+                countries[j["handle"]] = j["country"]
             else:
-                countries[j["handle"]]="Unknown"
-        url="https://codeforces.com/api/user.info?handles="
+                countries[j["handle"]] = "Unknown"
+        url = "https://codeforces.com/api/user.info?handles="
 
-if len(handles)%100!=0:
+if len(handles) % 100 != 0:
     while True:
-            try:
-                response=requests.get(url)
-            except:
-                print("failed")
-                time.sleep(1)
-            else:
-                print("success")
-                break;
-    data=json.loads(response.text)
+        try:
+            response = requests.get(url)
+        except:
+            print("failed")
+            time.sleep(1)
+        else:
+            print("success")
+            break
+    data = json.loads(response.text)
     for j in data["result"]:
         print(j["handle"])
         if "country" in j.keys():
-            countries[j["handle"]]=j["country"]
+            countries[j["handle"]] = j["country"]
         else:
-            countries[j["handle"]]="Unknown"
-    url="https://codeforces.com/api/user.info?handles="
+            countries[j["handle"]] = "Unknown"
+    url = "https://codeforces.com/api/user.info?handles="
 
-with open("countries.json","w") as countriesjson:
+with open("countries.json", "w") as countriesjson:
     countriesjson.write(json.dumps(countries))
