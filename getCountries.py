@@ -20,10 +20,8 @@ for i in range(len(handles)):
             try:
                 response=requests.get(url)
             except:
-                print("failed")
                 time.sleep(1)
             else:
-                print("success")
                 break;
         data=json.loads(response.text)
         for j in data["result"]:

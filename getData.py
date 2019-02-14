@@ -24,10 +24,8 @@ for i in handles:
             response=requests.get("https://codeforces.com/api/user.rating?handle="+i)
             userdata=json.loads(response.text)["result"]
         except:
-            print("failed")
             time.sleep(1)
         else:
-            print("success")
             break
     old=0
     data.setdefault(i,[])
