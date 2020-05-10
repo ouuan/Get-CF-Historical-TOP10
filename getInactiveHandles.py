@@ -9,8 +9,9 @@ with open("handles.json", "r") as handlesjson:
 
 tot = 0
 page = 425
+maxtot = 10000
 
-while tot < 10000:
+while tot < maxtot:
     page += 1
     while True:
         try:
@@ -21,7 +22,7 @@ while tot < 10000:
         else:
             break
     p = s.find("outdated")
-    while p != -1 and tot < 1000:
+    while p != -1 and tot < maxtot:
         nxt = s.find("outdated", p + 1)
         sta = s.find("/profile/", p)
         end = s.find("\"", sta)
