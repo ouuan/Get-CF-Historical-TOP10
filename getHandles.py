@@ -6,11 +6,12 @@ url = "https://codeforces.com/ratings/page/"
 
 handles = []
 
-for page in range(1, 26):
+for page in range(1, 51):
     while True:
         try:
             s = requests.get(url + str(page)).text
         except:
+            print("Try again...")
             time.sleep(1)
         else:
             break

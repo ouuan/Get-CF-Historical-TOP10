@@ -1,0 +1,31 @@
+name: Update
+
+on:
+  push:
+    branches:
+      - master
+  schedule:
+    - cron:  '0 0 * * *'
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: pip install requests
+      - run: python getHandles.py
+      - run: python getInactiveHandles.py
+      - run: python getCountries.py
+      - run: python getData.py
+      - run: python dataToCsv.py
+      - name: Move to artifacts
+        run: |
+          mkdir artifacts
+          mv -t artifacts handles.json countries.json data.json data.csv
+      - name: Get date
+        id: date
+        run: echo ::set-output name=date::$(date +"%Y-%m-%d")
+      - uses: actions/upload-artifact@v2
+        with:
+          name: CF-Historical-TOP10-${{ steps.date.outputs.date }}
+          path: artifacts/*

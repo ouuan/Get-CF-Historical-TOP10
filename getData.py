@@ -5,7 +5,6 @@ import datetime
 
 STARTTIME = datetime.datetime(2010, 2, 19)
 
-
 def getDay(x):
     xTime = time.strftime("%Y %m %d", time.localtime(x)).split()
     xTime = datetime.datetime(int(xTime[0]), int(xTime[1]), int(xTime[2]))
@@ -23,10 +22,10 @@ for i in handles:
     print(i)
     while True:
         try:
-            response = requests.get(
-                "https://codeforces.com/api/user.rating?handle=" + i)
+            response = requests.get("https://codeforces.com/api/user.rating?handle=" + i)
             userdata = json.loads(response.text)["result"]
         except:
+            print("Try again...")
             time.sleep(1)
         else:
             break

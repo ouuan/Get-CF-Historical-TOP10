@@ -20,6 +20,7 @@ for i in range(len(handles)):
             try:
                 response = requests.get(url)
             except:
+                print("Try again...")
                 time.sleep(1)
             else:
                 break
@@ -37,7 +38,7 @@ if len(handles) % 100 != 0:
         try:
             response = requests.get(url)
         except:
-            print("failed")
+            print("Try again...")
             time.sleep(1)
         else:
             print("success")

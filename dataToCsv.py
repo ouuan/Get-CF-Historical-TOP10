@@ -3,7 +3,7 @@ import time
 import operator
 import datetime
 
-maxPerDay = 10
+maxPerDay = 100
 
 with open("handles.json", "r") as handlesjson:
     handles = json.load(handlesjson)
