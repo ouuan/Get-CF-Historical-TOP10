@@ -8,11 +8,10 @@ with open("handles.json", "r") as handlesjson:
     handles = json.load(handlesjson)
 
 tot = 0
-page = 425
+page = 444
 maxtot = 10000
 
 while tot < maxtot:
-    page += 1
     while True:
         try:
             s = requests.get(url + str(page)).text
@@ -31,6 +30,7 @@ while tot < maxtot:
         tot += 1
         print(handle)
         p = nxt
+    page += 1
 
 f = open("handles.json", "w")
 f.write(json.dumps(handles))
